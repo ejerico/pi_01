@@ -5,6 +5,7 @@ import io
 from sklearn.neighbors import NearestNeighbors
 from scipy.sparse import csr_matrix
 from sklearn.feature_extraction.text import CountVectorizer
+import uvicorn
 
 ### Load file into a dataframe
 url = 'https://raw.githubusercontent.com/ejerico/pi_01/main/my_data.csv'
@@ -101,3 +102,6 @@ def recomendacion(titulo: str):
     answer = recommend(titulo, nn, df)
 
     return {'lista recomendada': answer}
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=10000, reload=True)
