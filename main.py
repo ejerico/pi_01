@@ -6,7 +6,7 @@ from sklearn.neighbors import NearestNeighbors
 from scipy.sparse import csr_matrix
 from sklearn.feature_extraction.text import CountVectorizer
 
-### Load 'only_ratings.csv' file into a dataframe
+### Load file into a dataframe
 url = 'https://raw.githubusercontent.com/ejerico/pi_01/main/my_data.csv'
 response = requests.get(url).content
 df = pd.read_csv(io.StringIO(response.decode('utf-8')))
