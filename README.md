@@ -32,5 +32,18 @@ El servidor web utiliza varias librerías de Python como pandas, numpy, requests
 El desarrollo paso a paso de la aplicación se puede ver en el notebook de desarrollo .ipynb de este repositorio.
 
 Links de interés:
+
 - Aplicación de Render: https://pi-01-kp3m.onrender.com
 - Video de YouTube: https://youtu.be/zeOxk6R8x5Y
+
+Consultas de ejemplo (una para cada función):
+
+https://pi-01-kp3m.onrender.com/get_peliculas_mes/november
+https://pi-01-kp3m.onrender.com/get_peliculas_dia/sunday
+https://pi-01-kp3m.onrender.com/get_franquicia/toy%20story%20collection
+https://pi-01-kp3m.onrender.com/get_peliculas_pais/ar
+https://pi-01-kp3m.onrender.com/get_productoras/universal%20pictures
+https://pi-01-kp3m.onrender.com/get_retorno/interstellar
+https://pi-01-kp3m.onrender.com/get_recomendacion/heavy%20metal
+
+Nota: Las funciones admiten palabras en inglés. Para países, introducir el código internacional (ejemplo 'ar' para Argentina, 'dk' para Dinamarca).
