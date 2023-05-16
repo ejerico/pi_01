@@ -17,7 +17,7 @@ El servidor proporciona las siguientes funciones:
 
 - franquicia(franquicia: str): se ingresa el nombre de la franquicia (ejemplo ‘toy story collection) y retorna la cantidad de películas, ganancia total y promedio.
 
-- peliculas_pais(pais: str): se ingresa el nombre del país (ejemplo ‘ar’ para Argentina o ‘us’ para Estados Unidos) y retorna la cantidad de películas producidas en el mismo.
+- peliculas_pais(pais: str): se ingresa el código del país (ejemplo ‘ar’ para Argentina o ‘us’ para Estados Unidos) y retorna la cantidad de películas producidas en el mismo.
 
 - productoras(productora: str): se ingresa el nombre de la productora (ejemplo ‘universal pictures’) y retorna la ganancia total y la cantidad de películas que produjeron.
 
@@ -38,12 +38,12 @@ Links de interés:
 
 Consultas de ejemplo (una para cada función):
 
-https://pi-01-kp3m.onrender.com/get_peliculas_mes/november
-https://pi-01-kp3m.onrender.com/get_peliculas_dia/sunday
-https://pi-01-kp3m.onrender.com/get_franquicia/toy%20story%20collection
-https://pi-01-kp3m.onrender.com/get_peliculas_pais/ar
-https://pi-01-kp3m.onrender.com/get_productoras/universal%20pictures
-https://pi-01-kp3m.onrender.com/get_retorno/interstellar
-https://pi-01-kp3m.onrender.com/get_recomendacion/heavy%20metal
+- https://pi-01-kp3m.onrender.com/get_peliculas_mes/november
+- https://pi-01-kp3m.onrender.com/get_peliculas_dia/sunday
+- https://pi-01-kp3m.onrender.com/get_franquicia/toy%20story%20collection
+- https://pi-01-kp3m.onrender.com/get_peliculas_pais/ar
+- https://pi-01-kp3m.onrender.com/get_productoras/universal%20pictures
+- https://pi-01-kp3m.onrender.com/get_retorno/interstellar
+- https://pi-01-kp3m.onrender.com/get_recomendacion/heavy%20metal
 
-Nota: Las funciones admiten palabras en inglés. Para países, introducir el código internacional (ejemplo 'ar' para Argentina, 'dk' para Dinamarca).
+Nota: Las funciones admiten palabras en inglés. Para países, introducir el código del país (ejemplo 'ar' para Argentina, 'dk' para Dinamarca).
