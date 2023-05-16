@@ -7,7 +7,7 @@ from scipy.sparse import csr_matrix
 from sklearn.feature_extraction.text import CountVectorizer
 import uvicorn
 
-### Load file into a dataframe
+# Load file into a dataframe
 url = 'https://raw.githubusercontent.com/ejerico/pi_01/main/my_data.csv'
 response = requests.get(url).content
 df = pd.read_csv(io.StringIO(response.decode('utf-8')))
@@ -18,8 +18,8 @@ app = FastAPI()
 @app.get('/get_peliculas_mes/{mes}')
 def peliculas_mes(mes: str): 
     '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente''' 
-    
-    respuesta = df['month'].str.contains(mes).sum()
+
+    respuesta = int(df['month'].str.contains(mes).sum())
     return {'mes':mes, 'cantidad':respuesta}
 
 # FUNCTION 2
@@ -27,7 +27,7 @@ def peliculas_mes(mes: str):
 def peliculas_dia(dia: str): 
     '''Se ingresa el dia y la funcion retorna la cantidad de peliculas que se estrenaron ese dia (de la semana, en str, ejemplo 'lunes') historicamente''' 
     
-    respuesta = df['day'].str.contains(dia).sum()
+    respuesta = int(df['day'].str.contains(dia).sum())
     return {'dia':dia, 'cantidad':respuesta}
 
 # FUNCTION 3
@@ -57,7 +57,9 @@ def productoras(productora: str):
     '''Ingresas la productora, retornando la ganancia total y la cantidad de peliculas que produjeron''' 
 
     quantity_films = df['production_companies'].str.contains(productora).sum()
-    subset = df[df['production_companies'].str.contains(productora)]
+    df_clean = df.fillna('unknown')
+    subset = df_clean[df_clean['production_companies'].str.contains(productora)]
+    subset['revenue'] = pd.to_numeric(subset['revenue'], errors='coerce')
     total_revenue = subset['revenue'].sum()
 
     return {'productora':productora, 'ganancia_total':total_revenue, 'cantidad':quantity_films}
@@ -67,12 +69,12 @@ def productoras(productora: str):
 def retorno(pelicula: str): 
     '''Ingresas la pelicula, retornando la inversion, la ganancia, el retorno y el año en el que se lanzo''' 
 
-    year =      df[df['title'] == pelicula]['release_year'].iloc[0]
-    budget =    df[df['title'] == pelicula]['budget'].iloc[0]
-    revenue =   df[df['title'] == pelicula]['revenue'].iloc[0]
-    return_ =   df[df['title'] == pelicula]['return'].iloc[0]
+    year =      int(df[df['title'] == pelicula]['release_year'].iloc[0])
+    budget =    int(df[df['title'] == pelicula]['budget'].iloc[0])
+    revenue =   int(df[df['title'] == pelicula]['revenue'].iloc[0])
+    return_ =   int(df[df['title'] == pelicula]['return'].iloc[0])
 
-    return {'pelicula':pelicula, 'inversion':budget, 'ganacia':revenue,'retorno':return_, 'anio':year}
+    return {'pelicula':pelicula, 'inversion':budget, 'ganancia':revenue,'retorno':return_, 'anio':year}
 
 # FUNCTION 7 - MACHINE LEARNING
 @app.get('/get_recomendacion/{titulo}')
